@@ -1,0 +1,83 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ParseIV {
+    public ParseIV() {
+    }
+
+    public static void main(String[] args) throws IOException {
+        ArrayList collectfilelines = new ArrayList();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\merged\\Merged.txt"));
+            Throwable var3 = null;
+
+            try {
+                for(String line = reader.readLine(); line != null; line = reader.readLine()) {
+                    collectfilelines.add(line);
+                }
+            } catch (Throwable var15) {
+                var3 = var15;
+                throw var15;
+            } finally {
+                if (reader != null) {
+                    if (var3 != null) {
+                        try {
+                            reader.close();
+                        } catch (Throwable var14) {
+                            var3.addSuppressed(var14);
+                        }
+                    } else {
+                        reader.close();
+                    }
+                }
+
+            }
+        } catch (IOException var17) {
+            System.out.println("problem reading the  file" + var17);
+        }
+
+        List<String> tc05filrecords = new ArrayList(collectfilelines);
+        tc05filrecords.removeIf((s) -> {
+            return !s.substring(0, 2).equals("05");
+        });
+        TC05 tc05 = new TC05();
+        StringBuilder record = new StringBuilder();
+        int prevFieldNo = 0;
+        Iterator var6 = tc05filrecords.iterator();
+
+        while(var6.hasNext()) {
+            String lineS = (String)var6.next();
+            int fieldNo = Integer.parseInt(lineS.substring(2, 4));
+            if (fieldNo <= prevFieldNo) {
+                if (record.length() != 0) {
+                    tc05.addTC05(String.valueOf(record));
+                }
+
+                record.setLength(0);
+                prevFieldNo = 0;
+            }
+
+            while(prevFieldNo < fieldNo) {
+                record.append(';');
+                ++prevFieldNo;
+            }
+
+            record.append(lineS.replaceAll(";", "0"));
+        }
+
+        if (record.length() != 0) {
+            tc05.addTC05(String.valueOf(record));
+        }
+
+    }
+}
