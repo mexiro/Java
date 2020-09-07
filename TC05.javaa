@@ -1,0 +1,55 @@
+
+import javax.xml.transform.Source;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.SQLOutput;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+
+public class TC05 {
+    public void addTC05(String input) {
+         //System.out.println(input); // Debug input
+
+
+        //168 chars fixedlinelength
+        String fixedlinelength = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+//
+//
+//        String replace1 =input.replace(";;",";"+fixedlinelength+";");
+//        String replacedwithfixedlngth =replace1.replace(";;",";"+replace1+";");
+//        System.out.println(replacedwithfixedlngth.length()+" "+replacedwithfixedlngth);
+
+
+        ArrayList items = new ArrayList(Arrays.asList(input));
+
+        List<String> replaced = (List<String>) items.stream()
+                //.map(val -> val==""? val:fixedlinelength)
+                .filter(x -> x =="")
+                .map(y -> y = "xxxxxxxxxxxxxxxxx")
+                .collect(Collectors.toList());
+
+        replaced.forEach(System.out::println);
+
+
+        //System.out.println(items);
+    }
+    public static void writeFile2() throws IOException {
+        FileWriter fw = new FileWriter("out.txt");
+
+        for (int i = 0; i < 10; i++) {
+            fw.write("something");
+        }
+
+        fw.close();
+    }
+
+
+
+}
+
+
+
+
+
