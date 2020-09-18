@@ -27,16 +27,23 @@ public class ParseIV {
         }
 
 
-        //*TODO AD TC05
-       // List<String> tc05filrecords = new ArrayList<>(collectfilelines);
+        //*TODO AD TC05 05
+          // List<String> tc05filrecords = new ArrayList<>(collectfilelines);
         //this one workds //tc05filrecords.removeIf(s -> !s.substring(0, 2).equals("05")); //Get only 05
-
+        // Draft Data (TC 05, 06, 07, 15, 16, 17, 25, 26, 27, 35, 36, 37)
         Predicate<String> tc5 = p-> p.startsWith("05");
         Predicate<String> tc6 = p-> p.startsWith("06");
         Predicate<String> tc7 = p-> p.startsWith("07");
+        Predicate<String> tc15 = p-> p.startsWith("15");
+        Predicate<String> tc16 = p-> p.startsWith("16");
+        Predicate<String> tc17 = p-> p.startsWith("17");
+        Predicate<String> tc25 = p-> p.startsWith("25");
+        Predicate<String> tc26 = p-> p.startsWith("26");
+        Predicate<String> tc27 = p-> p.startsWith("27");
+
         List<String> tc05filrecords = collectfilelines.stream()
                   //.filter(p-> p.startsWith("07"))
-                  .filter(tc5.or(tc6).or(tc7))
+                  .filter(tc5.or(tc15).or(tc25))
                   //.forEach(System.out::println);
                   .collect(toList());
 //
@@ -76,16 +83,16 @@ public class ParseIV {
             headers = "Transaction Code,Transaction Code Qualifier,Transaction Component Sequence Number,Account Number,Account Number Extension,Floor Limit Indicator,CRB/Exception File Indicator,Positive Cardholder Authorization Service (PCAS) Indicator,Acquirer Reference Number,Acquirer's Business ID,Purchase Date (MMDD),Destination Amount,Destination Currency Code,Source Amount,Source Currency Code,Merchant Name,Merchant City,Merchant Country Code,Merchant Category Code,Merchant ZIP Code,Merchant State/Province Code,Requested Payment Service,Number of Payment Forms,Usage Code,Reason Code,Settlement Flag,Authorization Characteristics Indicator,Authorization Code,POS Terminal Capability,Reserved,Cardholder ID Method,Collection-Only Flag,POS Entry Mode,Central Processing Date (YDDD),Reimbursement Attribute";
         }
         ;
-
-        if (whichtc.equals("tc06")) {
-            inputedtc = "C:\\merged\\exportedTC05.csv";
-        }
-        ;
-
-        if (whichtc.equals("tc07")) {
-            inputedtc = "C:\\merged\\exportedTC07.csv";
-        }
-        ;
+//
+//        if (whichtc.equals("tc06")) {
+//            inputedtc = "C:\\merged\\exportedTC05.csv";
+//        }
+//        ;
+//
+//        if (whichtc.equals("tc07")) {
+//            inputedtc = "C:\\merged\\exportedTC07.csv";
+//        }
+//        ;
 
         FileWriter fw = new FileWriter(inputedtc);
 
