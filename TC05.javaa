@@ -23,24 +23,61 @@ public class TC05 {
         for (int i=0; i<items.size();i++) {
             //if (items.get(i).equals("")) items.set(i,fixedlinelength);
             checklinelength= (String) items.get(i);
-            if(checklinelength.isEmpty()) items.set(i,fixedlinelength); //debug System.out.println(i)
+            if(checklinelength.isEmpty()) items.set(i,fixedlinelength); //debug System.out.println(i);
+
         }
+
         String str = String.join("", items);
+
        //TODO debug here //
         // System.out.println(str.length()+"-"+str);
-       // writeFile2(str.length()+"-"+str);
+        //writeFile2(str.length()+"-"+str);
 
+        //Tc05 ka :
+        // 1008, = 00,01,03,05
+        // 1176, = 00,01,03,05,06
+        // 1344, = 00,01,03,05,   07
+       if (str.length()==1008) {
+               /* 00 */
+               finalrow = str.substring(0, 2) + "," + str.substring(2, 3) + "," + str.substring(3, 4) + "," + str.substring(4, 20) + "," + str.substring(20, 23) + "," + str.substring(23, 24) + "," + str.substring(24, 25) + "," + str.substring(25, 26) + "," + str.substring(26, 49) + "," + str.substring(49, 57) + "," + str.substring(57, 61) + "," + str.substring(61, 73) + "," + str.substring(73, 76) + "," + str.substring(76, 88) + "," + str.substring(88, 91) + "," + str.substring(91, 116) + "," + str.substring(116, 129) + "," + str.substring(129, 132) + "," + str.substring(132, 136) + "," + str.substring(136, 141) + "," + str.substring(141, 144) + "," + str.substring(144, 145) + "," + str.substring(145, 146) + "," + str.substring(146, 147) + "," + str.substring(147, 149) + "," + str.substring(149, 150) + "," + str.substring(150, 151) + "," + str.substring(151, 157) + "," + str.substring(157, 158) + "," + str.substring(158, 159) + "," + str.substring(159, 160) + "," + str.substring(160, 161) + "," + str.substring(161, 163) + "," + str.substring(163, 167) + "," + str.substring(167, 168)
+                       /*01*/ + str.substring(168, 170) + "," + str.substring(170, 171) + "," + str.substring(171, 172) + "," + str.substring(172, 173) + "," + str.substring(173, 175) + "," + str.substring(175, 184) + "," + str.substring(184, 190) + "," + str.substring(190, 191) + "," + str.substring(191, 241) + "," + str.substring(241, 243) + "," + str.substring(243, 246) + "," + str.substring(246, 247) + "," + str.substring(247, 248) + "," + str.substring(248, 263) + "," + str.substring(263, 271) + "," + str.substring(271, 283) + "," + str.substring(283, 284) + "," + str.substring(284, 285) + "," + str.substring(285, 289) + "," + str.substring(289, 291) + "," + str.substring(291, 292) + "," + str.substring(292, 293) + "," + str.substring(293, 294) + "," + str.substring(294, 295) + "," + str.substring(295, 296) + "," + str.substring(296, 297) + "," + str.substring(297, 298) + "," + str.substring(298, 300) + "," + str.substring(300, 325) + "," + str.substring(325, 334) + "," + str.substring(334, 335) + "," + str.substring(335, 336) + ","
+                       /*02*/ + str.substring(336, 504) + ","
+                       /*03*/ + str.substring(504, 672)+ ","
+                       /*04*/ + str.substring(672, 840)+ ","
+                       /*05*/ + str.substring(840, 1008)
+               ;
+               writeFile2(finalrow);}
+        else if (str.length()==1176) {
+               /* 00 */
 
-       if (str.length() == 1008){
-          /* 00 */  finalrow = str.substring(0,2)+","+str.substring(2,3)+","+str.substring(3,4)+","+str.substring(4,20)+","+str.substring(20,23)+","+str.substring(23,24)+","+str.substring(24,25)+","+str.substring(25,26)+","+str.substring(26,49)+","+str.substring(49,57)+","+str.substring(57,61)+","+str.substring(61,73)+","+str.substring(73,76)+","+str.substring(76,88)+","+str.substring(88,91)+","+str.substring(91,116)+","+str.substring(116,129)+","+str.substring(129,132)+","+str.substring(132,136)+","+str.substring(136,141)+","+str.substring(141,144)+","+str.substring(144,145)+","+str.substring(145,146)+","+str.substring(146,147)+","+str.substring(147,149)+","+str.substring(149,150)+","+str.substring(150,151)+","+str.substring(151,157)+","+str.substring(157,158)+","+str.substring(158,159)+","+str.substring(159,160)+","+str.substring(160,161)+","+str.substring(161,163)+","+str.substring(163,167)+","+str.substring(167,168)
-           /* 01 */
-           ;
+               finalrow = str.substring(0, 2) + "," + str.substring(2, 3) + "," + str.substring(3, 4) + "," + str.substring(4, 20) + "," + str.substring(20, 23) + "," + str.substring(23, 24) + "," + str.substring(24, 25) + "," + str.substring(25, 26) + "," + str.substring(26, 49) + "," + str.substring(49, 57) + "," + str.substring(57, 61) + "," + str.substring(61, 73) + "," + str.substring(73, 76) + "," + str.substring(76, 88) + "," + str.substring(88, 91) + "," + str.substring(91, 116) + "," + str.substring(116, 129) + "," + str.substring(129, 132) + "," + str.substring(132, 136) + "," + str.substring(136, 141) + "," + str.substring(141, 144) + "," + str.substring(144, 145) + "," + str.substring(145, 146) + "," + str.substring(146, 147) + "," + str.substring(147, 149) + "," + str.substring(149, 150) + "," + str.substring(150, 151) + "," + str.substring(151, 157) + "," + str.substring(157, 158) + "," + str.substring(158, 159) + "," + str.substring(159, 160) + "," + str.substring(160, 161) + "," + str.substring(161, 163) + "," + str.substring(163, 167) + "," + str.substring(167, 168)
+                       /* 01 */ + str.substring(168, 170) + "," + str.substring(170, 171) + "," + str.substring(171, 172) + "," + str.substring(172, 173) + "," + str.substring(173, 175) + "," + str.substring(175, 184) + "," + str.substring(184, 190) + "," + str.substring(190, 191) + "," + str.substring(191, 241) + "," + str.substring(241, 243) + "," + str.substring(243, 246) + "," + str.substring(246, 247) + "," + str.substring(247, 248) + "," + str.substring(248, 263) + "," + str.substring(263, 271) + "," + str.substring(271, 283) + "," + str.substring(283, 284) + "," + str.substring(284, 285) + "," + str.substring(285, 289) + "," + str.substring(289, 291) + "," + str.substring(291, 292) + "," + str.substring(292, 293) + "," + str.substring(293, 294) + "," + str.substring(294, 295) + "," + str.substring(295, 296) + "," + str.substring(296, 297) + "," + str.substring(297, 298) + "," + str.substring(298, 300) + "," + str.substring(300, 325) + "," + str.substring(325, 334) + "," + str.substring(334, 335) + "," + str.substring(335, 336) + ","
+                       /*02*/ + str.substring(336, 504) + ","
+                       /*03*/ + str.substring(504, 672) + ","
+                       /*04*/ + str.substring(672, 840)+ ","
+                       /*05*/ + str.substring(840, 1008)+ ","
+                       /*05*/ + str.substring(840, 1008)+ ","
+                       /*06*/ + str.substring(1008, 1176)
+               ;
+               writeFile2(finalrow);}
+       else if (str.length()==1344) {
 
-           writeFile2(finalrow);
+               /* 00 */
+               finalrow = str.substring(0, 2) + "," + str.substring(2, 3) + "," + str.substring(3, 4) + "," + str.substring(4, 20) + "," + str.substring(20, 23) + "," + str.substring(23, 24) + "," + str.substring(24, 25) + "," + str.substring(25, 26) + "," + str.substring(26, 49) + "," + str.substring(49, 57) + "," + str.substring(57, 61) + "," + str.substring(61, 73) + "," + str.substring(73, 76) + "," + str.substring(76, 88) + "," + str.substring(88, 91) + "," + str.substring(91, 116) + "," + str.substring(116, 129) + "," + str.substring(129, 132) + "," + str.substring(132, 136) + "," + str.substring(136, 141) + "," + str.substring(141, 144) + "," + str.substring(144, 145) + "," + str.substring(145, 146) + "," + str.substring(146, 147) + "," + str.substring(147, 149) + "," + str.substring(149, 150) + "," + str.substring(150, 151) + "," + str.substring(151, 157) + "," + str.substring(157, 158) + "," + str.substring(158, 159) + "," + str.substring(159, 160) + "," + str.substring(160, 161) + "," + str.substring(161, 163) + "," + str.substring(163, 167) + "," + str.substring(167, 168)
+                       /* 01 */ + str.substring(168, 170) + "," + str.substring(170, 171) + "," + str.substring(171, 172) + "," + str.substring(172, 173) + "," + str.substring(173, 175) + "," + str.substring(175, 184) + "," + str.substring(184, 190) + "," + str.substring(190, 191) + "," + str.substring(191, 241) + "," + str.substring(241, 243) + "," + str.substring(243, 246) + "," + str.substring(246, 247) + "," + str.substring(247, 248) + "," + str.substring(248, 263) + "," + str.substring(263, 271) + "," + str.substring(271, 283) + "," + str.substring(283, 284) + "," + str.substring(284, 285) + "," + str.substring(285, 289) + "," + str.substring(289, 291) + "," + str.substring(291, 292) + "," + str.substring(292, 293) + "," + str.substring(293, 294) + "," + str.substring(294, 295) + "," + str.substring(295, 296) + "," + str.substring(296, 297) + "," + str.substring(297, 298) + "," + str.substring(298, 300) + "," + str.substring(300, 325) + "," + str.substring(325, 334) + "," + str.substring(334, 335) + "," + str.substring(335, 336)+ ","
+                       /*02*/ + str.substring(336, 504) + ","
+                       /*03*/ + str.substring(504, 672)+ ","
+                       /*04*/ + str.substring(672, 840)+ ","
+                       /*05*/ + str.substring(840, 1008)+ ","
+                       /*05*/ + str.substring(840, 1008)+ ","
+                       /*06*/ + str.substring(1008, 1176)+ ","
+                       /*07*/ + str.substring(1176, 1344)
+               ;
+               writeFile2(finalrow);}
 
+       else {       finalrow = "not_rec_len" + str.length() + str.substring(0, str.length());
+                  writeFile2(finalrow);
        }
-       finalrow = str;
-         writeFile2(finalrow);
 
 
 
