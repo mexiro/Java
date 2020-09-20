@@ -28,6 +28,7 @@ public class ParseIV {
 
 
         //*TODO AD TC05 05
+        writeFile2("tc05"); // write file headers
           // List<String> tc05filrecords = new ArrayList<>(collectfilelines);
         //this one workds //tc05filrecords.removeIf(s -> !s.substring(0, 2).equals("05")); //Get only 05
         // Draft Data (TC 05, 06, 07, 15, 16, 17, 25, 26, 27, 35, 36, 37)
@@ -42,21 +43,33 @@ public class ParseIV {
         Predicate<String> tc27 = p-> p.startsWith("27");
 
         List<String> tc05filrecords = collectfilelines.stream()
-                  //.filter(p-> p.startsWith("07"))
-                  .filter(tc5.or(tc15).or(tc25))
+                   .filter(tc5.or(tc15).or(tc25))
                   //.forEach(System.out::println);
                   .collect(toList());
-//
-
-
-        TC05 tc05 = new TC05();
-        writeFile2("tc05");
-
         //Union records ex: 05000,0501,0502 etc
+        looptcrs(tc05filrecords);
+
+        List<String> tc06filrecords = collectfilelines.stream()
+                .filter(tc6.or(tc16).or(tc26))
+                //.forEach(System.out::println);
+                .collect(toList());
+        //Union records ex: 05000,0501,0502 etc
+        looptcrs(tc06filrecords);
+
+        List<String> tc07filrecords = collectfilelines.stream()
+                .filter(tc7.or(tc17).or(tc27))
+                //.forEach(System.out::println);
+                .collect(toList());
+        //Union records ex: 05000,0501,0502 etc
+        looptcrs(tc07filrecords);
+
+    }
+    public static void looptcrs (List<String>  tc05filrecords) throws IOException {
+        TC05 tc05 = new TC05();
         StringBuilder record = new StringBuilder();
         int prevFieldNo = 0;
         for (String lineS : tc05filrecords) {
-            int fieldNo = Integer.parseInt(lineS.substring(2, 4));
+            int fieldNo = Integer.parseInt(lineS.substring(3, 4));
 
             // print last record To print first line
             if (fieldNo <= prevFieldNo) {
@@ -73,26 +86,23 @@ public class ParseIV {
             tc05.addTC05(String.valueOf(record)); // or Debug System.out.println(record);
     }
 
-
     public static void writeFile2(String whichtc) throws IOException {
         String inputedtc = null;
         String headers = null;
 
         if (whichtc.equals("tc05")) {
             inputedtc = "C:\\merged\\exportedTC05.csv";
-            headers = "Transaction Code,Transaction Code Qualifier,Transaction Component Sequence Number,Account Number,Account Number Extension,Floor Limit Indicator,CRB/Exception File Indicator,Positive Cardholder Authorization Service (PCAS) Indicator,Acquirer Reference Number,Acquirer's Business ID,Purchase Date (MMDD),Destination Amount,Destination Currency Code,Source Amount,Source Currency Code,Merchant Name,Merchant City,Merchant Country Code,Merchant Category Code,Merchant ZIP Code,Merchant State/Province Code,Requested Payment Service,Number of Payment Forms,Usage Code,Reason Code,Settlement Flag,Authorization Characteristics Indicator,Authorization Code,POS Terminal Capability,Reserved,Cardholder ID Method,Collection-Only Flag,POS Entry Mode,Central Processing Date (YDDD),Reimbursement Attribute";
+            headers = "Transaction Code,Transaction Code Qualifier,Transaction Component Sequence Number,Account Number,Account Number Extension,Floor Limit Indicator,CRB/Exception File Indicator,Positive Cardholder Authorization Service (PCAS) Indicator,Acquirer Reference Number,Acquirer's Business ID,Purchase Date (MMDD),Destination Amount,Destination Currency Code,Source Amount,Source Currency Code,Merchant Name,Merchant City,Merchant Country Code,Merchant Category Code,Merchant ZIP Code,Merchant State/Province Code,Requested Payment Service,Number of Payment Forms,Usage Code,Reason Code,Settlement Flag,Authorization Characteristics Indicator,Authorization Code,POS Terminal Capability,Reserved,Cardholder ID Method,Collection-Only Flag,POS Entry Mode,Central Processing Date (YDDD),Reimbursement Attribute," +
+             /* 01 */ "Transaction Code,Transaction Code Qualifier,Transaction Component Sequence Number,Business Format Code,Token Assurance Level,Reserved,Reserved,Documentation Indicator,Member Message Text,Special Condition Indicators,Fee Program Indicator,Issuer Charge,Reserved,Card Acceptor ID,Terminal ID,National Reimbursement Fee,Mail/Phone/Electronic Commerce and Payment Indicator,Special Chargeback Indicator,Conversion Date,Reserved,Acceptance Terminal Indicator,Prepaid Card Indicator,Service Development Field,AVS Response Code,Authorization Source Code,Purchase Identifier Format,Account Selection,Installment Payment Count,Purchase Identifier,Cashback,Chip Condition Code,POS Environment," +
+             /* 02 */  "TC0502_filled_with_x," +
+            /* 03 */  "TC0503," +
+             /* 04 */  "TC0504,_filled_with_x"   +
+                    /* 05 */  "TC0505," +
+                    /* 06 */  "TC0506,"   +
+                    /* 07*/  "TC0507"   +
+                    "\n";
         }
-        ;
-//
-//        if (whichtc.equals("tc06")) {
-//            inputedtc = "C:\\merged\\exportedTC05.csv";
-//        }
-//        ;
-//
-//        if (whichtc.equals("tc07")) {
-//            inputedtc = "C:\\merged\\exportedTC07.csv";
-//        }
-//        ;
+
 
         FileWriter fw = new FileWriter(inputedtc);
 
@@ -100,7 +110,6 @@ public class ParseIV {
         fw.close();
 
     }
-
 }
 
 
