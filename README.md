@@ -1,5 +1,5 @@
 # JAVA - Codes and samples
-## _Personal Java projects_
+## _Personal Java projects Erion Maxhari_
 ##### Java mini projects, classes, deployments, and code samples mainly for work and fund but with the purpose of learning the beautiful Java language.
 
 ### 1. Why?
