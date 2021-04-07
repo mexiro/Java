@@ -103,8 +103,8 @@ public class DB_Link {
                 /** RUN THE HTTP for SMS ERIONI  */
                 /** ---------------------------- */
 
-                //String myurltext1 = "http://80.78.74.210:8888/?User=fibanktest&Password=00fbtest19"; /** Test */
-                String myurltext1 = "http://80.78.74.210:8888/?User=fibank&Password=FIBank@2021!"; /** Real */
+                //String myurltext1 = "http://80.78.74.210:8888/?User=********&Password=*******"; /** Test */
+                String myurltext1 = "http://80.78.74.210:8888/?User=********&Password=********"; /** Real */
                 String myurltext2 = "&Text=";
                 String myurltext3 = "&PhoneNumber=";
                 String myurltext4 = "&Sender=Fibank&ReceiptRequested=Yes";
@@ -164,8 +164,8 @@ public class DB_Link {
 
                                               //System.out.println(response);
             } else { /** This is for PIN only - This is a comment shkruaj ca te dua */
-                //String myurltext1 = "http://80.78.74.210:8888/?User=fibanktest&Password=fbtest19"; /** Test */
-                String myurltext1 = "http://80.78.74.210:8888/?User=fibank&Password=FIBank@2021!"; /** Real */
+                //String myurltext1 = "http://80.78.74.210:8888/?User="; /** Test */
+                String myurltext1 = "http://80.78.74.210:8888/?User=****&Password=*******!"; /** Real */
                 String myurltext2 = "&Text=";
                 String myurltext3 = "&PhoneNumber=";
                 String myurltext4 = "&Sender=Fibank&ReceiptRequested=Yes";
